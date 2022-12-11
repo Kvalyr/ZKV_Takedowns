@@ -13,8 +13,6 @@ ZKVMOD.utils = utils
 -- ====================================================================================================================
 -- Modules
 
-print("derp 1")
-
 ZKVMOD.Modules = {}
 function utils.InitModule( mod, moduleKey )
     local module = mod.Modules[moduleKey]
@@ -102,7 +100,23 @@ function utils.assert( testVal, msg )
     end
 end
 
+function utils.doesFileExist( filePath )
+    local f = io.open(filePath, "r")
+    if f ~= nil then
+        io.close(f)
+        return true
+    else
+        return false
+    end
+end
+
 function utils.doFile( filePath, silent )
+    if not utils.doesFileExist(filePath) then
+        if not silent then
+            utils.printWarning("filePath invalid for utils.doFile:", filePath)
+        end
+        return
+    end
     if not silent then
         utils.debug("doFile: Executing Lua file: " .. filePath)
     end

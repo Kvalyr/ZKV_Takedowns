@@ -23,6 +23,11 @@ function ZKVTD_Settings.Load()
     local file = io.open(ZKVTD.configFileName, "r")
     if file == nil then
         ZKVTD.printError("Failed to open '" .. ZKVTD.configFileName .. "'")
+
+        -- Save config to config.json once then recurse to account for first-time load
+        ZKVTD_Settings.Save()
+        ZKVTD_Settings.Load()
+
         return
     end
 

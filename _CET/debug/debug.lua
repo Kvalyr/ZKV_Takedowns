@@ -1,5 +1,6 @@
 local ZKVTD = GetMod("ZKV_Takedowns")
 
+ZKVTD.debugMode = true
 
 -- GetMod("ZKV_Takedowns").GiveDebugItems()
 function ZKVTD.GiveDebugItems()
@@ -9,4 +10,3 @@ function ZKVTD.GiveDebugItems()
 
     Game.AddToInventory("Items.Preset_Hammer_Default", 1);
 end
-

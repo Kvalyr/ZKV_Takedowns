@@ -1,7 +1,7 @@
 -- ====================================================================================================================
 -- ZKV_Takedowns for CP2077 by Kvalyr
 -- ====================================================================================================================
-local version = "0.4.0"
+local version = "0.4.1"
 local modString = "ZKV_Takedowns v" .. version
 local ZKV_Takedowns = {
     version = version,
@@ -13,7 +13,7 @@ local ZKV_Takedowns = {
     displayName = "ZKVTD - Finisher & Takedown Overhaul",
 }
 local ZKVTD = ZKV_Takedowns
-ZKVTD.debugMode = true
+ZKVTD.debugMode = false
 ZKVTD.version = version
 ZKVTD.modString = modString
 local utils = assert(loadfile("utils.lua"))(ZKVTD)
@@ -50,6 +50,8 @@ end
 
 local function onInit()
     ZKVTD.debug("onInit")
+    utils.doFile("debug/debug.lua")
+
     utils.doFile("constants.lua")
 
     utils.doFile("i18n/i18n.lua")
@@ -70,7 +72,6 @@ local function onInit()
     -- utils.doFile("experimental/control_unlocks.lua")
     utils.pcall(SetupSettings)
 
-    utils.doFile("debug/debug.lua", true)
 
     ZKVTD.print("Finished Loading!")
 end
