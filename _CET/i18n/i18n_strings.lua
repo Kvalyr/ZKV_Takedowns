@@ -106,27 +106,27 @@ function i18n_strings:Init()
     -- ====================================================================================================================
 
     -- Polski
-    -- Initial translation done with Google Translate - Corrections welcome at https://github.com/Kvalyr/ZKV_Takedowns!
+    -- Translation by PeterMods76 @ NexusMods
     local strings_PL = {
-        ["zkvtd_settings.category.takedowns"] = "Takedowns",
-        ["zkvtd_settings.category.mtb_animswap"] = "Mantis Blades Wykańczacze",
-        ["zkvtd_settings.category.misc_tweaks"] = "Różne poprawki",
-        ["zkvtd_settings.category.takedowns_byweapon"] = "Takedowns - Wybór animacji",
+        ["zkvtd_settings.category.takedowns"] = "Ogłuszenia",
+        ["zkvtd_settings.category.mtb_animswap"] = "Eliminacja Ostrzami Modliszki",
+        ["zkvtd_settings.category.misc_tweaks"] = "Inne ulepszenia",
+        ["zkvtd_settings.category.takedowns_byweapon"] = "Ogłuszenia - Wybór animacji",
 
-        ["zkvtd_settings.Takedowns.OnlyMelee.label"] = "Tylko z bronią białą w ręku",
-        ["zkvtd_settings.Takedowns.OnlyMelee.tooltip"] = "Przełącz, czy nowy monit o zabicie ma być wyświetlany tylko przy trzymanej broni białej (wł.) czy przy dowolnej broni (wył.) \nChwytanie pozostaje niezmienione.",
+        ["zkvtd_settings.Takedowns.OnlyMelee.label"] = "Tylko z bronią w ręku",
+        ["zkvtd_settings.Takedowns.OnlyMelee.tooltip"] = "Ustawia, czy monit o ogłuszenie/zabicie ma być wyświetlany tylko przy trzymanej broni białej (wł), czy przy dowolnej broni (wył) \nChwyt pozostaje niezmieniony.",
 
         ["zkvtd_settings.Takedowns.NonLethalBlunt.label"] = "Nieśmiercionośna broń obuchowa",
-        ["zkvtd_settings.Takedowns.NonLethalBlunt.tooltip"] = "Przełącza, czy zabójstwa obuchową bronią (pięściami, ramionami goryli, pałkami, nietoperzami itp.) pozostawiają cel nieprzytomnym zamiast martwym.\n Wyłącz tę opcję, aby obalenia obuchową bronią były śmiertelne.",
+        ["zkvtd_settings.Takedowns.NonLethalBlunt.tooltip"] = "Ustawia, czy ogłuszenia bronią obuchową (pięści, ramiona gorilla, pałki, młoty itp.) pozostawiają cel nieprzytomny zamiast martwy.\n Wyłącz tę opcję, aby ogłuszenia bronią obuchową były śmiertelne.",
 
-        ["zkvtd_settings.MTBAnimSwap.UseAerial.label"] = "Użyj wykańczacza powietrza Mantis Blades",
-        ["zkvtd_settings.MTBAnimSwap.UseAerial.tooltip"] = "Włącz tę opcję, aby używać animacji Aerial Takedown jako finiszera Modliszki w walce zamiast normalnej animacji finiszera.",
+        ["zkvtd_settings.MTBAnimSwap.UseAerial.label"] = "Dodaj eliminację z powietrza",
+        ["zkvtd_settings.MTBAnimSwap.UseAerial.tooltip"] = "Włącz tą opcję, aby aktywować animację eliminacji z powietrza ostrzami modliszki w walce zamiast normalnej animacji eliminacji.",
 
-        ["zkvtd_settings.MTBAnimSwap.RandomChoice.label"] = "Używaj również zwykłych Mantis Blades Aerial Finisher",
-        ["zkvtd_settings.MTBAnimSwap.RandomChoice.tooltip"] = "Włącz tę opcję, aby mod losowo wybierał między animacją Aerial Takedown a oryginalną animacją zakończenia Mantis Blades podczas walki. \nNie działa, jeśli poprzednie ustawienie jest wyłączone.",
+        ["zkvtd_settings.MTBAnimSwap.RandomChoice.label"] = "Używaj TYLKO eliminacji z powietrza",
+        ["zkvtd_settings.MTBAnimSwap.RandomChoice.tooltip"] = "Włącz tą opcję, aby mod wybierał losowo między animacją eliminacji z powietrza a oryginalną animacją eliminacji ostrzami modliszki podczas walki. \nNie działa, jeśli poprzednie ustawienie jest wyłączone.",
 
-        ["zkvtd_settings.Misc_Stealth.MeleeMult.label"] = "Mnożnik obrażeń w walce wręcz w ukryciu",
-        ["zkvtd_settings.Misc_Stealth.MeleeMult.tooltip"] = "Ten mnożnik obrażeń jest stosowany do ataków z ukrycia.\n Wystarczająco wysokie obrażenia mogą zamienić silne ataki (takie jak ataki Modliszkowego Ostrza z wyskoku) w natychmiastowe obalenia, uruchamiając ciosy kończące.\n Domyślnie w podstawowej grze jest to +30% obrażeń (tj.; 1.3)",
+        ["zkvtd_settings.Misc_Stealth.MeleeMult.label"] = "Mnożnik obrażeń w walce wręcz z ukrycia",
+        ["zkvtd_settings.Misc_Stealth.MeleeMult.tooltip"] = "Ten mnożnik obrażeń jest stosowany do ataków z ukrycia.\n Wystarczająco wysokie obrażenia mogą zamienić silne ataki (takie jak ataki z wyskoku Ostrzami Modliszki) w natychmiastowe eliminacje, uruchamiając ciosy kończące.\n Domyślna wartość w grze podstawowej to +30% do obrażeń (i.e.; 1.3)",
     }
     AddStringsForLanguage("pl-pl", strings_PL)
 
@@ -245,8 +245,87 @@ function i18n_strings:Init()
     -- ====================================================================================================================
 
     -- Chinese (PRC)
+    -- Translation submitted by Zo7lin @ NexusMods
     local strings_ZHCN = {
-        -- TODO: Using strings_EN as a reference, add translation strings here
+        ["Animations"] = "处决动作",
+
+        -- Takedown animations
+        ["finisher_default.label"] = "默认处决",
+        ["finisher_default.tooltip"] = "先打喉咙，再一拳撂倒！",
+        ["AerialTakedown_Simple.label"] = "空中击倒 (拳头)",
+        ["AerialTakedown_Simple.tooltip"] = "空中击倒敌人再轻轻敲醒他沉睡的心灵 (拳头)",
+        ["AerialTakedown_Back_Simple.label"] = "空中击倒 (背身-拳头)",
+        ["AerialTakedown_Back_Simple.tooltip"] = "空中击倒敌人再轻轻敲醒他沉睡的心灵 (背身-拳头)",
+        ["AerialTakedown_MantisBlades.label"] = "空中击倒 (螳螂刀)",
+        ["AerialTakedown_MantisBlades.tooltip"] = "空中击倒敌人再捅穿他的脑袋~ (螳螂刀)",
+        ["AerialTakedown_Back_MantisBlades.label"] = "空中击倒 (背身-螳螂刀)",
+        ["AerialTakedown_Back_MantisBlades.tooltip"] = "空中击倒敌人再捅穿他的脑袋~ (背身-螳螂刀)",
+
+        ["Wea_Katana.label"] = "刺穿处决",
+        ["Wea_Katana.tooltip"] = "双手握柄刺穿处决 (武士刀)",
+        ["Wea_Katana_Back.label"] = "斩首处决",
+        ["Wea_Katana_Back.tooltip"] = "斩下敌人狗头 (武士刀) - 目标会面向于V",
+
+        ["Cyb_MantisBlades.label"] = "双刃刺穿 (正面)",
+        ["Cyb_MantisBlades.tooltip"] = "双刃刺穿敌人再举高高~ (正面)",
+        ["Cyb_MantisBlades_Back.label"] = "双刃刺穿 (背身)",
+        ["Cyb_MantisBlades_Back.tooltip"] = "双刃刺穿敌人再举高高~ (背身)",
+
+        ["ZKVTD_Takedown_HeavyAttack01.label"] = "重击 1",
+        ["ZKVTD_Takedown_HeavyAttack01.tooltip"] = "长按鼠标右键的重击",
+        ["ZKVTD_Takedown_HeavyAttack02.label"] = "重击 2",
+        ["ZKVTD_Takedown_HeavyAttack02.tooltip"] = "长按鼠标右键的重击",
+        ["ZKVTD_Takedown_ComboAttack03.label"] = "连击 3",
+        ["ZKVTD_Takedown_ComboAttack03.tooltip"] = "无脑狂点鼠标左键的攻击",
+        ["ZKVTD_Takedown_BlockAttack.label"] = "格挡攻击",
+        ["ZKVTD_Takedown_BlockAttack.tooltip"] = "格挡弹反攻击",
+        ["ZKVTD_Takedown_SafeAttack.label"] = "无害攻击",
+        ["ZKVTD_Takedown_SafeAttack.tooltip"] = "无害的攻击",
+
+        ["ZKVTD_Katana_backstab.label"] = "长刀剑刺穿处决 (背身)",
+        ["ZKVTD_Katana_backstab.tooltip"] = "双手握柄背刺处决 (武士刀)",
+        ["ZKVTD_Katana_behead_behind.label"] = "斩首处决 (背身)",
+        ["ZKVTD_Katana_behead_behind.tooltip"] = "斩下敌人狗头 (武士刀) - 目标会面向于V",
+        ["ZKVTD_Knife_backstab.label"] = "短刀剑刺穿处决 (背身)",
+        ["ZKVTD_Knife_backstab.tooltip"] = "短刀剑刺穿处决 (背身)",
+        ["ZKVTD_Monowire_behead_behind.label"] = "斩首处决",
+        ["ZKVTD_Monowire_behead_behind.tooltip"] = "单分子线横向交叉切割斩首处决",
+
+        -- Weapons -- TODO: Pull from game's own localization files?
+        ["Wea_Fists"] = "拳头",
+        ["Wea_ShortBlade"] = "短刀剑",
+        ["Wea_Knife"] = "小刀",
+        ["Wea_LongBlade"] = "长刀剑",
+        ["Wea_Katana"] = "武士刀",
+        ["Wea_Chainsword"] = "链锯剑",
+        ["Wea_Machete"] = "剃刀",
+        ["Wea_OneHandedClub"] = "单手棍棒",
+        ["Wea_TwoHandedClub"] = "双手棍棒",
+        ["Wea_Hammer"] = "锤子",
+        ["Cyb_MantisBlades"] = "螳螂刀",
+        ["Cyb_StrongArms"] = "大猩猩手臂",
+        ["Cyb_NanoWires"] = "单分子线",
+        -- ["Cyb_Launcher"] = "Wea_Machete",
+
+        ["zkvtd_settings.category.takedowns"] = "击倒处决大修",
+        ["zkvtd_settings.category.mtb_animswap"] = "螳螂刀处决",
+        ["zkvtd_settings.category.misc_tweaks"] = "其他调整",
+        ["zkvtd_settings.category.takedowns_byweapon"] = "击倒处决大修 - 处决动作选择",
+
+        ["zkvtd_settings.Takedowns.OnlyMelee.label"] = "仅持有近战武器时击杀",
+        ["zkvtd_settings.Takedowns.OnlyMelee.tooltip"] = "仅在持有近战武器时显示新的击杀提示，禁用则任何武器都可显示击杀提示",
+
+        ["zkvtd_settings.Takedowns.NonLethalBlunt.label"] = "非致命性钝器",
+        ["zkvtd_settings.Takedowns.NonLethalBlunt.tooltip"] = "使钝器(拳头、大猩猩手臂、棍棒等)的击杀会让目标失去知觉而不是死亡，禁用则钝器击杀能致死目标",
+
+        ["zkvtd_settings.MTBAnimSwap.UseAerial.label"] = "螳螂刀空中击倒动作",
+        ["zkvtd_settings.MTBAnimSwap.UseAerial.tooltip"] = "启用/禁用 空中击倒动作变更为螳螂刀处决动作",
+
+        ["zkvtd_settings.MTBAnimSwap.RandomChoice.label"] = "随机空中击倒动作",
+        ["zkvtd_settings.MTBAnimSwap.RandomChoice.tooltip"] = "启用该选项则随机选择螳螂刀空中击倒动作和原版空中击倒动作(如果禁用螳螂刀动作则无法生效)",
+
+        ["zkvtd_settings.Misc_Stealth.MeleeMult.label"] = "潜行伤害倍数",
+        ["zkvtd_settings.Misc_Stealth.MeleeMult.tooltip"] = "足够高的伤害可将螳螂刀重攻击变更为瞬间处决，原版游戏默认值是+30%伤害(即：1.3)",
     }
     AddStringsForLanguage("zh-cn", strings_ZHCN)
 
