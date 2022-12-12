@@ -4,12 +4,13 @@
 local ZKVTD = GetMod("ZKV_Takedowns")
 local utils = ZKVTD.utils
 local zkvtd_constants = ZKVTD.constants
-local MeleeTakedowns = ZKVTD:GetModule("MeleeTakedowns")
 local constants = {}
-MeleeTakedowns.constants = constants
 ZKVTD:AddModule("MeleeTakedowns_Constants", constants)
 
 function constants:Init()
+    local MeleeTakedowns = ZKVTD:GetModule("MeleeTakedowns")
+    MeleeTakedowns.constants = constants
+
     constants.configKey = "Takedowns_Anims"
     constants.callbackKey = "Callback_" .. constants.configKey
 
@@ -29,7 +30,7 @@ function constants:Init()
     constants.weaponTypes = weaponTypes
     constants.weaponTypesIndices = weaponTypesIndices
 
-    utils.TweakDB_CreateArrayOfFlatsAndIndices(weaponTypes, constants.tweakDBKey_constants_WeaponTypes, true)
+    utils.TweakDB.CreateArrayOfFlatsAndIndices(weaponTypes, constants.tweakDBKey_constants_WeaponTypes, true)
 
     -- ====================================================================================================================
 
@@ -100,11 +101,11 @@ function constants:Init()
         "ZKVTD_Takedown_BlockAttack", -- Strong attack from block (Defensive attack)
         "ZKVTD_Takedown_BlockAttack_NonLethal", -- Strong attack from block (Defensive attack)
     }
-    local takedownAnimsIndices = utils.Table_createInverseArray_Strings(takedownAnims)
+    local takedownAnimsIndices = utils.Table.CreateInverseArray_Strings(takedownAnims)
     constants.takedownAnims = takedownAnims
     constants.takedownAnimsIndices = takedownAnimsIndices
 
-    utils.TweakDB_CreateArrayOfFlatsAndIndices(takedownAnims, constants.tweakDBKey_constants_Anims, true)
+    utils.TweakDB.CreateArrayOfFlatsAndIndices(takedownAnims, constants.tweakDBKey_constants_Anims, true)
 
     -- ====================================================================================================================
     -- Allowed animations by weapon
@@ -203,6 +204,6 @@ function constants:Init()
     constants.allowedAnimsByWeapon = allowedAnimsByWeapon
 
     for idx, weaponType in ipairs(weaponTypes) do
-        utils.TweakDB_CreateArrayOfFlats(allowedAnimsByWeapon[weaponType], constants.tweakDBKey_AnimsAvailable .. ":" .. weaponType, true)
+        utils.TweakDB.CreateArrayOfFlats(allowedAnimsByWeapon[weaponType], constants.tweakDBKey_AnimsAvailable .. ":" .. weaponType, true)
     end
 end

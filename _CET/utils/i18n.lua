@@ -1,18 +1,16 @@
+local utils, ZKVMOD = ...
 -- ====================================================================================================================
--- ZKV_Takedowns for CP2077 by Kvalyr
+-- ZKV Mod Utils for CP2077 by Kvalyr
 -- ====================================================================================================================
-local ZKVTD = GetMod("ZKV_Takedowns")
-local utils = ZKVTD.utils
+
 local strlower = string.lower
 local gsub = string.gsub
 
 local i18n = {}
 local englishLangKey = "en-us"
 i18n.locales = {}
-ZKVTD.i18n = i18n
-
-ZKVTD:AddModule("i18n", i18n)
-
+utils.i18n = i18n
+ZKVMOD.i18n = i18n
 -- ====================================================================================================================
 
 -- If a string starts with this, i18n will be skipped, this string will be stripped and the raw string is returned
@@ -30,7 +28,7 @@ end
 local function LangTable_HasString( langTable, stringKey )
     stringKey = strlower(stringKey)
     local str = langTable[stringKey]
-    return utils.IsStrValid(str)
+    return utils.Str.IsValid(str)
 end
 
 local function LangTable_AddString( langTable, stringKey, stringValue, allowOverwrite )
@@ -45,12 +43,12 @@ end
 -- ====================================================================================================================
 
 function i18n:AddLanguageTable( langKey, langLabelEnglish, langLabelLocalized )
-    if not utils.IsStrValid(langKey) then
+    if not utils.Str.IsValid(langKey) then
         return
     end
     local localeTable = {}
     localeTable.strings = {}
-    localeTable._labelEnglish = langLabelEnglish or utils.titleCase(langKey)
+    localeTable._labelEnglish = langLabelEnglish or utils.Str.TitleCase(langKey)
     localeTable._labelLocal = langLabelLocalized or localeTable._labelEnglish
     localeTable.GetString = LangTable_GetString
     localeTable.HasString = LangTable_HasString
@@ -84,7 +82,7 @@ function i18n:GetStringForLang( langKey, stringKey, default, allowEnglishFallbac
 
     local localizedStr = localeTable:GetString(stringKey)
 
-    if not utils.IsStrValid(localizedStr, allowEmpty) then
+    if not utils.Str.IsValid(localizedStr, allowEmpty) then
         if langKey ~= englishLangKey and allowEnglishFallback then
             default = self:GetStringEnglish(stringKey, default, allowEmpty)
         end
@@ -95,7 +93,7 @@ end
 
 function i18n:GetString( stringKey, default, allowEnglishFallback, allowEmpty )
 
-    if utils.Str_starts_with(stringKey, i18n.skipKey) then
+    if utils.Str.StartsWith(stringKey, i18n.skipKey) then
         local tempStr = gsub(stringKey, i18n.skipKey, "")
         tempStr = gsub(tempStr, ".label", "")
         tempStr = gsub(tempStr, ".tooltip", "")
@@ -112,8 +110,13 @@ end
 
 -- GetMod("ZKV_Takedowns").i18n:GetCurrentLanguageKey()
 function i18n:GetCurrentLanguageKey()
+    if not Game then
+        -- TODO: Why is Game sometimes nil? calling too early?
+        utils.printError("i18n:GetCurrentLanguageKey() - Failed to access 'Game' object in CET. Defaulting to en-us")
+        return "en-us"
+    end
+
     local locCode = Game.GetSettingsSystem():GetGroup("/language"):GetVar("OnScreen"):GetValue().value
-    -- ZKVTD.debug("Game locCode:", locCode)
     return locCode or "en-us"
 end
 
@@ -125,33 +128,31 @@ end
 function i18n:DumpStrings()
     for _, v in pairs(self.locales) do
         for key, val in pairs(v) do
-            ZKVTD.debug("i18n", key, val)
+            utils.debug("i18n", key, val)
         end
     end
 end
 
 -- ====================================================================================================================
 
-function i18n:Init()
-    -- CP2077 official text languages
-    -- TODO: Remaining localized labels
-    self:AddLanguageTable("en-us", "English", "English")
+-- CP2077 official text languages
+-- TODO: Remaining localized labels
+i18n:AddLanguageTable("en-us", "English", "English")
 
-    self:AddLanguageTable("ar-ar", "Arabic", "العربية")
-    self:AddLanguageTable("cz-cz", "Czech", "Čeština")
-    self:AddLanguageTable("de-de", "German", "Deutsch")
-    self:AddLanguageTable("es-es", "Spanish", "Español")
-    self:AddLanguageTable("es-mx", "Latin America Spanish", "Español de Latinoamérica")
-    self:AddLanguageTable("fr-fr", "French", "Français")
-    self:AddLanguageTable("hu-hu", "Hungarian", "Magyar")
-    self:AddLanguageTable("it-it", "Italian", "Italiano")
-    self:AddLanguageTable("jp-jp", "Japanese", "日本語")
-    self:AddLanguageTable("kr-kr", "Korean", "한국인")
-    self:AddLanguageTable("pl-pl", "Polish", "Polski")
-    self:AddLanguageTable("pt-br", "Brazilian Portuguese", "Português brasileiro")
-    self:AddLanguageTable("ru-ru", "Russian", "Русский")
-    self:AddLanguageTable("th-th", "Thai", "ชาวไทย")
-    self:AddLanguageTable("tr-tr", "Turkish", "Türkçe")
-    self:AddLanguageTable("zh-cn", "Chinese (PRC)", nil)
-    self:AddLanguageTable("zh-tw", "Chinese (Taiwan)", nil)
-end
+i18n:AddLanguageTable("ar-ar", "Arabic", "العربية")
+i18n:AddLanguageTable("cz-cz", "Czech", "Čeština")
+i18n:AddLanguageTable("de-de", "German", "Deutsch")
+i18n:AddLanguageTable("es-es", "Spanish", "Español")
+i18n:AddLanguageTable("es-mx", "Latin America Spanish", "Español de Latinoamérica")
+i18n:AddLanguageTable("fr-fr", "French", "Français")
+i18n:AddLanguageTable("hu-hu", "Hungarian", "Magyar")
+i18n:AddLanguageTable("it-it", "Italian", "Italiano")
+i18n:AddLanguageTable("jp-jp", "Japanese", "日本語")
+i18n:AddLanguageTable("kr-kr", "Korean", "한국인")
+i18n:AddLanguageTable("pl-pl", "Polish", "Polski")
+i18n:AddLanguageTable("pt-br", "Brazilian Portuguese", "Português brasileiro")
+i18n:AddLanguageTable("ru-ru", "Russian", "Русский")
+i18n:AddLanguageTable("th-th", "Thai", "ชาวไทย")
+i18n:AddLanguageTable("tr-tr", "Turkish", "Türkçe")
+i18n:AddLanguageTable("zh-cn", "Chinese (PRC)", nil)
+i18n:AddLanguageTable("zh-tw", "Chinese (Taiwan)", nil)

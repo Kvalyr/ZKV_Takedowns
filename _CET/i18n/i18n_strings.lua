@@ -2,11 +2,13 @@
 -- ZKV_Takedowns for CP2077 by Kvalyr
 -- ====================================================================================================================
 local ZKVTD = GetMod("ZKV_Takedowns")
+local i18n = ZKVTD.i18n
 local i18n_strings = {}
 ZKVTD:AddModule("i18n_strings", i18n_strings)
-ZKVTD.i18n.strings = i18n_strings
+i18n.strings = i18n_strings
 
-local i18n = ZKVTD.i18n
+-- ====================================================================================================================
+
 local function AddStringsForLanguage( langKey, stringsTable )
     for key, value in pairs(stringsTable) do
         i18n:AddString(langKey, key, value)
@@ -21,6 +23,8 @@ end
 
 function i18n_strings:Init()
     local strings_EN = {
+        ["zkvtd_settings.tab"] = "ZKVTD",
+
         ["Animations"] = "Animations",
 
         -- Takedown animations

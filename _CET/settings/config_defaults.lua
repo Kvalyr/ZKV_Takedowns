@@ -47,7 +47,7 @@ function ConfigDefaults:Init()
             --
             "finisher_default",
             "AerialTakedown_Back_Simple",
-            "AerialTakedown_Simple",
+            -- "AerialTakedown_Simple",  -- Disabled by default as it rotates the player to the correct position for the takedown, which is weird from behind
         },
         Wea_LongBlade = {
             "ZKVTD_Katana_backstab",

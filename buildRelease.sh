@@ -47,9 +47,14 @@ rsync -v -a ../_CET --files-from=manifest_cet.zkv ${RELEASE_DIR}/bin/x64/plugins
 mkdir -p ${RELEASE_DIR}/r6/scripts/$MOD
 rsync -v -a ../ --files-from=manifest_r6.zkv ${RELEASE_DIR}
 
-rm ${RELEASE_DIR}.zip
+ZIP_FILENAME=${RELEASE_DIR}.zip
+
+if [ -f "$ZIP_FILENAME" ] ; then
+    rm "$ZIP_FILENAME"
+fi
+
 cd ${RELEASE_DIR}
-zip -r ../${RELEASE_DIR}.zip *
+zip -r ../${ZIP_FILENAME} *
 
 cd ..
-echo "Done. Release zip at: ${RELEASE_DIR}.zip"
+echo "Done. Release zip at: ${ZIP_FILENAME}"

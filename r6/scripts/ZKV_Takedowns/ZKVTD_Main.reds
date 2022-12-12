@@ -71,6 +71,7 @@ public final static func ZKV_GetActiveWeaponType(owner: ref<GameObject>) -> game
     let weaponType: gamedataItemType;
     // TODO: Validation
     weaponType = TweakDBInterface.GetWeaponItemRecord(ItemID.GetTDBID(ScriptedPuppet.GetWeaponRight(owner).GetItemID())).ItemType().Type();
+    weaponType = CatchAndCoerceWeaponType(weaponType);
     return weaponType;
 }
 
@@ -130,7 +131,9 @@ public final static func ZKV_IsMantisBladesActive(owner: ref<GameObject>) -> Boo
 //         return;
 //     }
 
-public final static func CatchAndCoerceUnarmed(weaponType: gamedataItemType) -> gamedataItemType{
+public final static func CatchAndCoerceWeaponType(weaponType: gamedataItemType) -> gamedataItemType{
+    ZKVLog("CatchAndCoerceWeaponType - weaponType: " + ToString(weaponType));
+
     switch weaponType {
         // Equipped weapon sometimes returns as clothing slots.. Let's just catch them all
         case gamedataItemType.Clo_Face:
@@ -147,6 +150,33 @@ public final static func CatchAndCoerceUnarmed(weaponType: gamedataItemType) -> 
             return gamedataItemType.Wea_Fists;
         case gamedataItemType.Clo_Outfit:
             return gamedataItemType.Wea_Fists;
+
+        // Treat guns as Wea_Fists until we've implemented Gun takedowns
+        case gamedataItemType.Wea_AssaultRifle:
+            return gamedataItemType.Wea_Fists;
+        case gamedataItemType.Wea_Axe:
+            return gamedataItemType.Wea_Fists;
+        case gamedataItemType.Wea_Handgun:
+            return gamedataItemType.Wea_Fists;
+        case gamedataItemType.Wea_HeavyMachineGun:
+            return gamedataItemType.Wea_Fists;
+        case gamedataItemType.Wea_LightMachineGun:
+            return gamedataItemType.Wea_Fists;
+        case gamedataItemType.Wea_PrecisionRifle:
+            return gamedataItemType.Wea_Fists;
+        case gamedataItemType.Wea_Revolver:
+            return gamedataItemType.Wea_Fists;
+        case gamedataItemType.Wea_Rifle:
+            return gamedataItemType.Wea_Fists;
+        case gamedataItemType.Wea_Shotgun:
+            return gamedataItemType.Wea_Fists;
+        case gamedataItemType.Wea_ShotgunDual:
+            return gamedataItemType.Wea_Fists;
+        case gamedataItemType.Wea_SniperRifle:
+            return gamedataItemType.Wea_Fists;
+        case gamedataItemType.Wea_SubmachineGun:
+            return gamedataItemType.Wea_Fists;
+
         default:
             return weaponType;
     };
@@ -159,7 +189,6 @@ public final static func ZKV_Takedowns_IsWeaponLethal(weaponType: gamedataItemTy
 
     if nonLethalBlunt {
         // Equipped weapon sometimes returns as clothing slots.. Let's just catch them all
-        weaponType = CatchAndCoerceUnarmed(weaponType);
         switch weaponType {
             // Blunt weapons
             case gamedataItemType.Wea_Fists:
@@ -390,7 +419,6 @@ public final static func ZKV_Takedowns_DoFinisherByWeaponType(
     let randMax: Int32;
     let effectArray_takedowns: array<CName>;
     let lethal: Bool = true;
-    weaponType = CatchAndCoerceUnarmed(weaponType);
     let countTakedowns: Int32 = ZKV_Takedowns_GetEnabledAnimCountForWeapon(weaponType);
     lethal = ZKV_Takedowns_IsWeaponLethal(weaponType);
 
@@ -489,8 +517,9 @@ public final static func ZKV_Takedowns_DoFinisherByWeaponType(
             // Kv
             // Repurpose unused KillTarget enumValue as Melee-weapon-takedown
             case ETakedownActionType.KillTarget:
-                effectTag = ZKV_Takedowns_GetLethalityEffectByWeapon(ZKV_GetActiveWeaponType(owner), false);
-                let zkv_animName: CName = ZKV_Takedowns_DoFinisherByWeaponType(scriptInterface, owner, target, ZKV_GetActiveWeaponType(owner));
+                let weaponType: gamedataItemType = ZKV_GetActiveWeaponType(owner);
+                effectTag = ZKV_Takedowns_GetLethalityEffectByWeapon(weaponType, false);
+                let zkv_animName: CName = ZKV_Takedowns_DoFinisherByWeaponType(scriptInterface, owner, target, weaponType);
                 if !(Equals(effectTag, n"setUnconsciousAerialTakedown") || Equals(effectTag, n"setUnconscious")){
                     (target as NPCPuppet).SetMyKiller(owner);
                 }

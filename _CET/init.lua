@@ -1,7 +1,7 @@
 -- ====================================================================================================================
 -- ZKV_Takedowns for CP2077 by Kvalyr
 -- ====================================================================================================================
-local version = "0.4.1"
+local version = "0.4.2"
 local modString = "ZKV_Takedowns v" .. version
 local ZKV_Takedowns = {
     version = version,
@@ -9,6 +9,7 @@ local ZKV_Takedowns = {
     description = modString .. " - Takedowns & Finishers Overhaul for CP2077 - Version: " .. version,
     descSimple = "Takedowns & Finishers Overhaul",
     nativeSettingsBasePath = "/ZKV",
+    nativeSettingsTabi18nKey = "zkvtd_settings.tab",
     configFileName = "config.json",
     displayName = "ZKVTD - Finisher & Takedown Overhaul",
 }
@@ -16,7 +17,7 @@ local ZKVTD = ZKV_Takedowns
 ZKVTD.debugMode = false
 ZKVTD.version = version
 ZKVTD.modString = modString
-local utils = assert(loadfile("utils.lua"))(ZKVTD)
+local utils = assert(loadfile("utils/main.lua"))(ZKVTD)
 utils.ImportUtilMethods()
 
 -- ====================================================================================================================
@@ -24,7 +25,6 @@ utils.ImportUtilMethods()
 local function SetupLocalization()
     ZKVTD.debug("SetupLocalization")
 
-    ZKVTD:InitModule("i18n")
     ZKVTD:InitModule("i18n_strings")
 end
 
@@ -37,7 +37,6 @@ end
 local function SetupSettings()
     ZKVTD.debug("SetupSettings")
 
-    ZKVTD:InitModule("SettingsUI")
     ZKVTD:InitModule("Settings")
 end
 
@@ -54,12 +53,9 @@ local function onInit()
 
     utils.doFile("constants.lua")
 
-    utils.doFile("i18n/i18n.lua")
     utils.doFile("i18n/i18n_strings.lua")
 
-    utils.doFile("settings/mem_config.lua")
     utils.doFile("settings/config_defaults.lua")
-    utils.doFile("settings/settingsUI_api.lua")
     utils.doFile("settings/settings.lua")
 
     ZKVTD.doFile("melee_takedowns/melee_takedowns.lua")

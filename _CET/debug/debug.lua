@@ -1,6 +1,6 @@
 local ZKVTD = GetMod("ZKV_Takedowns")
 
-ZKVTD.debugMode = true
+ZKVTD.debugMode = false
 
 -- GetMod("ZKV_Takedowns").GiveDebugItems()
 function ZKVTD.GiveDebugItems()

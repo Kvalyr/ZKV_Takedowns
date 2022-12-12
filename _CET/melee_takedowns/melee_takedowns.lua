@@ -67,9 +67,9 @@ function MeleeTakedowns:SetAnimStateForWeapon( weaponType, animKey, newState )
 
     -- Update TweakDB with new array
     local tweakDBKey = MeleeTakedowns:GetAnimTableTweakDBKeyByWeapon(weaponType, true)
-    ZKVTD.debug("MeleeTakedowns:SetAnimStateForWeapon()", weaponType, animKey, newState)
-    -- utils.TweakDB_CreateArrayOfFlatsAndIndices(animTable, tweakDBKey, false)
-    utils.TweakDB_CreateArrayOfFlats(animTable, tweakDBKey, false)
+    -- ZKVTD.debug("MeleeTakedowns:SetAnimStateForWeapon()", weaponType, animKey, newState)
+    -- utils.TweakDB.CreateArrayOfFlatsAndIndices(animTable, tweakDBKey, false)
+    utils.TweakDB.CreateArrayOfFlats(animTable, tweakDBKey, false)
 end
 
 function MeleeTakedowns:GetAnimStateForWeapon( weaponType, animKey )
@@ -171,13 +171,13 @@ local function setupAnims()
             end
 
             local callbackKey = MeleeTakedowns:GetCallbackKeyByWeaponAnim(weaponType, animKey, false)
-            ZKVTD.Config.AddCallback(callbackKey, callback_weaponTypeAnims)
+            utils.Config.AddCallback(callbackKey, callback_weaponTypeAnims)
         end
     end
 end
 
 function MeleeTakedowns:Init()
-    ZKVTD.debug("MeleeTakedowns:Init()")
+    utils.debug("MeleeTakedowns:Init()")
 
     SetupInteractions_Lethal()
 
@@ -185,26 +185,27 @@ function MeleeTakedowns:Init()
 
     setupAnims()
 
-    ZKVTD.Config.AddCallback("Update_Takedowns_OnlyMelee", Callback_Takedowns_OnlyMelee)
+    utils.Config.AddCallback("Update_Takedowns_OnlyMelee", Callback_Takedowns_OnlyMelee)
 
-    ZKVTD.Config.AddCallback_GenericSetFlat("ZKVTD.Takedowns.nonLethalBlunt", "Takedowns_NonLethalBlunt", true, "Update_Takedowns_NonLethalBlunt")
+    utils.Config.AddCallback_GenericSetFlat("ZKVTD.Takedowns.nonLethalBlunt", "Takedowns_NonLethalBlunt", true, "Update_Takedowns_NonLethalBlunt")
 
     -- TODO: Move this
     -- MTB AnimSwap
-    ZKVTD.Config.AddCallback_GenericSetFlat(
+    utils.Config.AddCallback_GenericSetFlat(
         "ZKVTD.MantisBladesAnimSwap.UseAerial", "MantisSwap_Finishers_UseAerialTakedownAnimation", true, "Update_MTBAnimSwap_UseAerial"
     )
-    ZKVTD.Config.AddCallback_GenericSetFlat(
+    utils.Config.AddCallback_GenericSetFlat(
         "ZKVTD.MantisBladesAnimSwap.RandomChoice", "MantisSwap_Finishers_MixDifferentAnimations", true, "Update_MTBAnimSwap_RandomChoice"
     )
 
     -- TODO: Move this
     -- Misc. Tweaks
-    ZKVTD.Config.AddCallback_GenericSetFlat(
+    utils.Config.AddCallback_GenericSetFlat(
         "EquipmentGLP.MeleeStealthPlayerBuff_inline1.value", "Misc_Stealth_MeleeMult", 1.3, "Update_Misc_Stealth_MeleeMult"
     )
 end
 
 -- ZKVTD:SetupMeleeTakedowns()
 
-ZKVTD.Modules["MeleeTakedowns"] = MeleeTakedowns
+ZKVTD:AddModule("MeleeTakedowns", MeleeTakedowns)
+-- ZKVTD.Modules["MeleeTakedowns"] = MeleeTakedowns

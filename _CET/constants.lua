@@ -25,6 +25,6 @@ local weaponTypes = {
     "Cyb_NanoWires",
     -- "Cyb_Launcher",
 }
-local weaponTypesIndices = utils.Table_createInverseArray_Strings(weaponTypes)
+local weaponTypesIndices = utils.Table.CreateInverseArray_Strings(weaponTypes)
 constants.weaponTypes = weaponTypes
 constants.weaponTypesIndices = weaponTypesIndices
