@@ -1,4 +1,4 @@
-local ZKVTD = GetMod("ZKV_Takedowns")
+local ZKVTD = GetMod("ZKVTD")
 -- ====================================================================================================================
 -- ZKV_Takedowns for CP2077 by Kvalyr
 -- ====================================================================================================================
@@ -19,12 +19,8 @@ function ZKVTD:SaveSettings()
     return utils.Settings.Save()
 end
 
--- GetMod("ZKV_Takedowns").Settings:Debug()
-function ZKVTD_Settings:Init()
-    utils.NativeSettings:Init()
 
-    ZKVTD:LoadSettings()
-
+function ZKVTD_Settings.SetupNativeSettingsUIWidgets()
     local modPathPrefix = "zkvtd_"
 
     local subcategories = { "takedowns", "mtb_animswap", "misc_tweaks", "takedowns_byweapon" }
@@ -66,11 +62,19 @@ function ZKVTD_Settings:Init()
         for _, animKey in pairs(anims) do
             local callbackKey = MeleeTakedowns:GetCallbackKeyByWeaponAnim(weaponType, animKey, false)
             local initOverride = MeleeTakedowns:GetAnimStateForWeapon(weaponType, animKey)
+            local configKey = "ConfigKey_Unused" .. weaponType .."_" .. animKey
 
-            utils.Settings.AddSetting(subCatKey, animKey, nil, "switch", { default = false }, callbackKey, initOverride)
+            utils.Settings.AddSetting(subCatKey, animKey, configKey, "switch", { default = false }, callbackKey, initOverride)
         end
     end
 
+end
+
+
+function ZKVTD_Settings:Init()
+    utils.NativeSettings:Init()
+    ZKVTD:LoadSettings()
+    ZKVTD_Settings.SetupNativeSettingsUIWidgets()
 end
 
 -- ====================================================================================================================

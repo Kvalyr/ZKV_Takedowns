@@ -1,7 +1,7 @@
 -- ====================================================================================================================
 -- ZKV_Takedowns for CP2077 by Kvalyr
 -- ====================================================================================================================
-local ZKVTD = GetMod("ZKV_Takedowns")
+local ZKVTD = GetMod("ZKVTD")
 local utils = ZKVTD.utils
 local zkvtd_constants = ZKVTD.constants
 local constants = {}
@@ -151,19 +151,19 @@ function constants:Init()
     local allowedAnims_ONE_HANDED_CLUB = {
 
         --
-        "ZKVTD_Takedown_ComboAttack03",
+        -- "ZKVTD_Takedown_ComboAttack03", -- Broken in 0.4.1
         "ZKVTD_Takedown_HeavyAttack02",
     }
 
     local allowedAnims_TWO_HANDED_CLUB = {
         --
-        "ZKVTD_Takedown_ComboAttack03",
+        -- "ZKVTD_Takedown_ComboAttack03", -- Broken in 0.4.1
         "ZKVTD_Takedown_HeavyAttack02",
     }
 
     local allowedAnims_HAMMER = {
         --
-        "ZKVTD_Takedown_ComboAttack03",
+        -- "ZKVTD_Takedown_ComboAttack03", -- Broken in 0.4.1
         "ZKVTD_Takedown_HeavyAttack02",
     }
 

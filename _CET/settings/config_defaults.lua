@@ -2,7 +2,7 @@
 -- ZKV_Takedowns for CP2077 by Kvalyr
 -- Default Config values - Editing this file is not advisable - Use the in-game settings UI instead (Main Menu -> Mods -> Kvalyr Mods)
 -- ====================================================================================================================
-local ZKVTD = GetMod("ZKV_Takedowns")
+local ZKVTD = GetMod("ZKVTD")
 local ConfigDefaults = {}
 ZKVTD:AddModule("ConfigDefaults", ConfigDefaults)
 
@@ -73,7 +73,7 @@ function ConfigDefaults:Init()
         },
         Wea_TwoHandedClub = {
             --
-            "ZKVTD_Takedown_ComboAttack03",
+            "ZKVTD_Takedown_HeavyAttack02",
         },
         Wea_Hammer = {
             --
@@ -109,5 +109,5 @@ function ConfigDefaults:Init()
         ZKVTD.Config.SetDefaultValue("Takedowns_Anims" .. ":" .. weaponType, statesTable)
     end
 
-    ZKVTD.print("Default Configuration loaded!")
+    ZKVTD.print("Config Defaults Loaded!")
 end

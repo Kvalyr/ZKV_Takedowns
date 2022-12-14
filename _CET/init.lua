@@ -1,24 +1,32 @@
 -- ====================================================================================================================
 -- ZKV_Takedowns for CP2077 by Kvalyr
 -- ====================================================================================================================
-local version = "0.4.2"
-local modString = "ZKV_Takedowns v" .. version
-local ZKV_Takedowns = {
+local version = "0.4.3"
+local modString = "ZKVTD v" .. version
+local ZKVTD = {
+    name = "ZKVTD",
     version = version,
     modString = modString,
     description = modString .. " - Takedowns & Finishers Overhaul for CP2077 - Version: " .. version,
     descSimple = "Takedowns & Finishers Overhaul",
     nativeSettingsBasePath = "/ZKV",
-    nativeSettingsTabi18nKey = "zkvtd_settings.tab",
+    nativeSettingsTabLabel = "ZKVTD",
+    -- nativeSettingsTabi18nKey = "zkvtd_settings.tab",
     configFileName = "config.json",
     displayName = "ZKVTD - Finisher & Takedown Overhaul",
+    profiles = {
+        User = "config.json",
+    },
+    archive_files = {
+        "ZKV_Takedowns.archive",
+    },
 }
-local ZKVTD = ZKV_Takedowns
 ZKVTD.debugMode = false
 ZKVTD.version = version
 ZKVTD.modString = modString
+
 local utils = assert(loadfile("utils/main.lua"))(ZKVTD)
-utils.ImportUtilMethods()
+utils.ClearLog() -- Clear the log file for a new startup
 
 -- ====================================================================================================================
 
@@ -48,18 +56,21 @@ local function SetupMeleeTakedowns()
 end
 
 local function onInit()
+    if not utils.Init() then
+        print("ZKVTD: Failed to initialize mod - Please check for error messages above.")
+        return
+    end
     ZKVTD.debug("onInit")
     utils.doFile("debug/debug.lua")
 
     utils.doFile("constants.lua")
-
     utils.doFile("i18n/i18n_strings.lua")
-
     utils.doFile("settings/config_defaults.lua")
     utils.doFile("settings/settings.lua")
 
     ZKVTD.doFile("melee_takedowns/melee_takedowns.lua")
     ZKVTD.doFile("melee_takedowns/constants.lua")
+
 
     utils.pcall(SetupConfig)
     utils.pcall(SetupLocalization)
@@ -67,13 +78,10 @@ local function onInit()
     -- utils.doFile("experimental/speedups.lua")
     -- utils.doFile("experimental/control_unlocks.lua")
     utils.pcall(SetupSettings)
-
-
-    ZKVTD.print("Finished Loading!")
 end
 
 function ZKVTD:New()
-    registerForEvent("onInit", onInit)
+    registerForEvent("onInit", function() utils.ModInit(onInit) end)
 
     return ZKVTD
 end

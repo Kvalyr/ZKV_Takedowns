@@ -65,6 +65,12 @@ Known compatibility risks:
     • I'll make changes for compatibility if necessary in a later version.
 
 
+:: Mods by Kvalyr ::
+Loot, Crafting & Upgrading Overhaul - ZKVLC ( https://www.nexusmods.com/cyberpunk2077/mods/6766/ )
+Finisher & Takedown Overhaul - ZKVTD ( https://www.nexusmods.com/cyberpunk2077/mods/6508 )
+Increased Blood - ZKV_MoreBlood ( https://www.nexusmods.com/cyberpunk2077/mods/6548 )
+
+
 ::  CREDITS ::
 ♦ The developers behind Cyber Engine Tweaks & redscript, without which this mod wouldn't be possible whatsoever
 ♦ The CP2077 modding discord members for answering questions

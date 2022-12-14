@@ -1,7 +1,7 @@
 -- ====================================================================================================================
 -- ZKV_Takedowns for CP2077 by Kvalyr
 -- ====================================================================================================================
-local ZKVTD = GetMod("ZKV_Takedowns")
+local ZKVTD = GetMod("ZKVTD")
 local utils = ZKVTD.utils
 local constants = {}
 ZKVTD.constants = constants

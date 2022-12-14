@@ -1,7 +1,7 @@
 -- ====================================================================================================================
 -- ZKV_Takedowns for CP2077 by Kvalyr
 -- ====================================================================================================================
-local ZKVTD = GetMod("ZKV_Takedowns")
+local ZKVTD = GetMod("ZKVTD")
 local utils = ZKVTD.utils
 -- ====================================================================================================================
 local MeleeTakedowns = {}
@@ -110,7 +110,7 @@ local function Callback_Takedowns_OnlyMelee( newValue )
 
     local flatKey = "Takedown.Kv_MeleeTakedown.instigatorPrereqs"
     local success = TweakDB:SetFlat(flatKey, instigatorPrereqs)
-    ZKVTD.debug("-Config Callback-", flatKey, "newValue:", newValue, "SetFlat success:", success)
+    -- ZKVTD.debug("-Callback_Takedowns_OnlyMelee-", flatKey, "newValue:", newValue, "SetFlat success:", success)
     if not success then
         ZKVTD.printError("Failed to SetFlat:", "'" .. flatKey .. "'", newValue)
     end

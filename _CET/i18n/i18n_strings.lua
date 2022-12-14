@@ -1,7 +1,7 @@
 -- ====================================================================================================================
 -- ZKV_Takedowns for CP2077 by Kvalyr
 -- ====================================================================================================================
-local ZKVTD = GetMod("ZKV_Takedowns")
+local ZKVTD = GetMod("ZKVTD")
 local i18n = ZKVTD.i18n
 local i18n_strings = {}
 ZKVTD:AddModule("i18n_strings", i18n_strings)

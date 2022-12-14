@@ -1,8 +1,8 @@
-local ZKVTD = GetMod("ZKV_Takedowns")
+local ZKVTD = GetMod("ZKVTD")
 
-ZKVTD.debugMode = false
+ZKVTD.debugMode = true
 
--- GetMod("ZKV_Takedowns").GiveDebugItems()
+-- GetMod("ZKVTD").GiveDebugItems()
 function ZKVTD.GiveDebugItems()
     Game.AddToInventory("Items.Preset_Crowbar_Default", 1);
     Game.AddToInventory("Items.Preset_Dildo_Stout", 1);

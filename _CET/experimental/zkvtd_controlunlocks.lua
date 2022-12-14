@@ -1,4 +1,4 @@
-local ZKVTD = GetMod("ZKV_Takedowns")
+local ZKVTD = GetMod("ZKVTD")
 -- ====================================================================================================================
 -- ZKV_Takedowns for CP2077 by Kvalyr
 -- ====================================================================================================================
@@ -42,4 +42,3 @@ local function SetupControlUnlocks()
 
     TweakDB:SetFlat("playerStateMachineLocomotionTakedown.takedownExecuteTakedown.onEnterCameraParamsName", "Default") -- Default: n"WorkspotLocked"
 end
-
