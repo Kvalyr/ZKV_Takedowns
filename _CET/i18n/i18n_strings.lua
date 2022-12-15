@@ -226,7 +226,86 @@ function i18n_strings:Init()
 
     -- Русский
     local strings_RU = {
-        -- TODO: Using strings_EN as a reference, add translation strings here
+        ["Animations"] = "Анимации",
+
+        -- Takedown animations
+        ["finisher_default.label"] = "Добивание по Умолчанию",
+        ["finisher_default.tooltip"] = "Удар в горло со сбиванием с ног.",
+        ["AerialTakedown_Simple.label"] = "Удар Сверху (Безоружный)",
+        ["AerialTakedown_Simple.tooltip"] = "Удар сверху (Безоружный).",
+        ["AerialTakedown_Back_Simple.label"] = "Удар Сверху (Сзади — Безоружный)",
+        ["AerialTakedown_Back_Simple.tooltip"] = "Удар сверху (Сзади — Безоружный).",
+        ["AerialTakedown_MantisBlades.label"] = "Удар Сверху (Клинки Богомола)",
+        ["AerialTakedown_MantisBlades.tooltip"] = "Удар сверху (Клинки Богомола).",
+        ["AerialTakedown_Back_MantisBlades.label"] = "Удар Сверху (Сзади — Клинки Богомола)",
+        ["AerialTakedown_Back_MantisBlades.tooltip"] = "Удар сверху (Сзади — Клинки Богомола).",
+
+        ["Wea_Katana.label"] = "Пронзание Длинным Клинком",
+        ["Wea_Katana.tooltip"] = "Добивание прозанием врага клинком (Катана).",
+        ["Wea_Katana_Back.label"] = "Обезглавливание",
+        ["Wea_Katana_Back.tooltip"] = "Обезглавливание (Катана) — Цель оборачивается к Ви.",
+
+        ["Cyb_MantisBlades.label"] = "Двойное Пронзание и Удар Слева (Спереди)",
+        ["Cyb_MantisBlades.tooltip"] = "Двойное пронзание и удар слева (Спереди).",
+        ["Cyb_MantisBlades_Back.label"] = "Двойное Пронзание и Удар Слева (Сзади)",
+        ["Cyb_MantisBlades_Back.tooltip"] = "Двойное пронзание и удар слева (Сзади).",
+
+        ["ZKVTD_Takedown_HeavyAttack01.label"] = "Сильная Атака 1",
+        ["ZKVTD_Takedown_HeavyAttack01.tooltip"] = "Сильная атака 1.",
+        ["ZKVTD_Takedown_HeavyAttack02.label"] = "Сильная Атака 2",
+        ["ZKVTD_Takedown_HeavyAttack02.tooltip"] = "Сильная атака 2.",
+        ["ZKVTD_Takedown_ComboAttack03.label"] = "Комбо-Атака 3",
+        ["ZKVTD_Takedown_ComboAttack03.tooltip"] = "Комбо-атака 3.",
+        ["ZKVTD_Takedown_BlockAttack.label"] = "Защитная Атака",
+        ["ZKVTD_Takedown_BlockAttack.tooltip"] = "Атака из защитной стойки.",
+         -- I'm not sure what kind of attack is implied. So I left it directly-translated.
+        ["ZKVTD_Takedown_SafeAttack.label"] = "Безопасная Атака",
+        ["ZKVTD_Takedown_SafeAttack.tooltip"] = "Безопасная атака.",
+
+        ["ZKVTD_Katana_backstab.label"] = "Удар в Спину Клинком",
+        ["ZKVTD_Katana_backstab.tooltip"] = "Удар в спину длинным клинком (Катана).",
+        ["ZKVTD_Katana_behead_behind.label"] = "Обезглавливание (Сзади)",
+        ["ZKVTD_Katana_behead_behind.tooltip"] = "Обезглавливание (Катана) — Цель продолжает смотреть в противоположную Ви сторону.",
+        ["ZKVTD_Knife_backstab.label"] = "Удар в Спину Коротким Клинком",
+        ["ZKVTD_Knife_backstab.tooltip"] = "Двуручный удар в спину коротким клинком.",
+        ["ZKVTD_Monowire_behead_behind.label"] = "Обезглавливание",
+        ["ZKVTD_Monowire_behead_behind.tooltip"] = "Обезглавливание направленными разрезающими ударами моноструны.",
+
+        -- Weapons -- TODO: Pull from game's own localization files?
+        ["Wea_Fists"] = "Кулаки",
+        ["Wea_ShortBlade"] = "Короткие клинки",
+        ["Wea_Knife"] = "Ножи",
+        ["Wea_LongBlade"] = "Длинные клинки",
+        ["Wea_Katana"] = "Катаны",
+        ["Wea_Chainsword"] = "Цепные печи",
+        ["Wea_Machete"] = "Мечете",
+        ["Wea_OneHandedClub"] = "Одноручные дубинки",
+        ["Wea_TwoHandedClub"] = "Двуручные биты",
+        ["Wea_Hammer"] = "Молоты",
+        ["Cyb_MantisBlades"] = "Клинки Богомола",
+        ["Cyb_StrongArms"] = "Руки Гориллы",
+        ["Cyb_NanoWires"] = "Моноструна",
+        -- ["Cyb_Launcher"] = "Wea_Machete",
+
+        ["zkvtd_settings.category.takedowns"] = "Добивания",
+        ["zkvtd_settings.category.mtb_animswap"] = "Добивания Клинков Богомола",
+        ["zkvtd_settings.category.misc_tweaks"] = "Прочие Настройки",
+        ["zkvtd_settings.category.takedowns_byweapon"] = "Добивания — Выбор Анимации",
+
+        ["zkvtd_settings.Takedowns.OnlyMelee.label"] = "Только с Оружием Ближнего Боя в Руках",
+        ["zkvtd_settings.Takedowns.OnlyMelee.tooltip"] = "Настраивает, будет ли отображаться новая опция добивания только в случае, если в руках есть оружие ближнего боя (Вкл.) или без него (Выкл.). \nЭто не влияет на захваты.",
+
+        ["zkvtd_settings.Takedowns.NonLethalBlunt.label"] = "Нелетальное Устранение",
+        ["zkvtd_settings.Takedowns.NonLethalBlunt.tooltip"] = "Определяет, будет ли устранение с использованием тупого оружия (кулаки, Руки Гориллы, дубинки, биты и т.д.) несмертельным и оставлять врага без сознания вместо убийства.\n Переключите этот параметр, чтобы сделать устранения с тупым оружием смертельными.",
+
+        ["zkvtd_settings.MTBAnimSwap.UseAerial.label"] = "Использовать Добивания Сверху для Клинков Богомола",
+        ["zkvtd_settings.MTBAnimSwap.UseAerial.tooltip"] = "Переключите эту опцию, чтобы использовать анимацию добивания сверху для Клинков Богомола, вместо обычных вариаций.",
+
+        ["zkvtd_settings.MTBAnimSwap.RandomChoice.label"] = "Также Использовать Обычные Анимации",
+        ["zkvtd_settings.MTBAnimSwap.RandomChoice.tooltip"] = "Переключите опцию, чтобы мод случайно выбирал анимацию добивания для Клинков Богомола (обычные и сверху) во время боя. \nНе имеет эффекта, если предыдущая настройка (использовать добивания сверху) отключена.",
+
+        ["zkvtd_settings.Misc_Stealth.MeleeMult.label"] = "Множитель Урона из Скрытности",
+        ["zkvtd_settings.Misc_Stealth.MeleeMult.tooltip"] = "Применяемый множитель ко всему урону, нанесенному из скрытности.\n Нанесение достаточно большого урона (например, удар Клинками Богомола в рывке) может привести к мгновенному устранению и срабатыванию анимации.\n Игровое значение по умолчанию: +30% (т.е. итоговый урон 1.3).",
     }
     AddStringsForLanguage("ru-ru", strings_RU)
 
